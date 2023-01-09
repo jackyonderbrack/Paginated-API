@@ -8,8 +8,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 import Products from './components/Products';
 
-
-
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
@@ -17,14 +15,14 @@ const darkTheme = createTheme({
 });
 
 
-
 const App = () => {
 
-  ////// IMPORT PRODUKTÓW ///////////
-
 const URL_API = "https://reqres.in/api/products";
-const [ products, setProducts ] = useState([]);
-const [ loading, setLoading ] = useState();
+
+/// Importujemy produkty
+const [ products, setProducts ] = useState([]); 
+/// Jeśli setProduct nie zadziała, pozostanie włączony setLoading
+const [ loading, setLoading ] = useState(); 
 
 useEffect(() => {
   const fetchProducts = async () => {
@@ -34,9 +32,10 @@ useEffect(() => {
     setLoading(false);
   }
   fetchProducts();
+  console.log("Produkty zostały pobrane")
 }, []);
 
-console.log(products)
+
 
 //////// PRODUKTY ZOSTAŁY ZAIMPORTOWANE ////////
 
@@ -45,7 +44,7 @@ console.log(products)
       <ThemeProvider theme={darkTheme}>
       <CssBaseline />
     <Container maxWidth="md">
-      <h1>Pagination task</h1>
+      <h1>Pagination</h1>
       <Products products={products} loading={loading}/>
 
     </Container>

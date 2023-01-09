@@ -12,24 +12,8 @@ const Products = ({ products, loading }) => {
   if(loading) {
     return <h2>Loading...</h2>
   }
-  
 
-  function createData(id, name, year, color, pantone_value) {
-    return (
-      [
-      id = products[0],
-      name = products[1],
-      year = products[2],
-      color = products[3],
-      pantone_value = products[4]
-      ]
-    ) ;
-  }
-
-  const rows = [ createData() ];
-
-  console.log(createData());
-  console.log(rows[0]);
+ 
   return (
     <TableContainer component={Paper}>
     <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -43,7 +27,7 @@ const Products = ({ products, loading }) => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {rows[0].map((row) => (
+        {products.map((row) => (
           <TableRow
             key={row.id}
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -57,6 +41,7 @@ const Products = ({ products, loading }) => {
         ))}
       </TableBody>
     </Table>
+    {console.log("Tabela została utworzona")}
   </TableContainer>
     
   )
