@@ -37,6 +37,8 @@ useEffect(() => {
 
 
 
+
+
 //////// PRODUKTY ZOSTAŁY ZAIMPORTOWANE ////////
 
    return (
@@ -45,7 +47,11 @@ useEffect(() => {
       <CssBaseline />
     <Container maxWidth="md">
       <h1>Pagination</h1>
-      <Products products={products} loading={loading}/>
+    
+        <Products products={products} loading={loading}/>
+      
+      
+      
 
     </Container>
     </ThemeProvider>
