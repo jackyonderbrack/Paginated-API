@@ -8,6 +8,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 import Products from './components/Products';
 
+
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
@@ -45,10 +46,11 @@ useEffect(() => {
 
       <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-    <Container maxWidth="md">
+    <Container maxWidth="sm">
       <h1>Pagination</h1>
     
         <Products products={products} loading={loading}/>
+        
       
       
       

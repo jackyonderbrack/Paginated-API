@@ -6,12 +6,16 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
+
+
+
 import { useState } from 'react';
 
+
+// Styles & Pagination imports
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import TableFooter from '@mui/material/TableFooter';
 import TablePagination from '@mui/material/TablePagination';
 import IconButton from '@mui/material/IconButton';
 import FirstPageIcon from '@mui/icons-material/FirstPage';
@@ -26,7 +30,10 @@ import LastPageIcon from '@mui/icons-material/LastPage';
 
 
 export default function Products({ products, loading }) {
-  
+
+
+
+ // Pagination settings.
   function TablePaginationActions(props) {
     const theme = useTheme();
     const { count, page, productsPerPage, onPageChange } = props;
@@ -97,7 +104,7 @@ export default function Products({ products, loading }) {
     return <h2>Loading...</h2>
   }
   
-  // Avoid a layout jump when reaching the last page with empty rows.
+// Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * productsPerPage - Products.length) : 0;
 
@@ -110,16 +117,18 @@ export default function Products({ products, loading }) {
     setPage(0);
   };
 
+
+ // Return Products:
+
   return (
+    
     <TableContainer component={Paper}>
-    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <Table sx={{ minWidth: 300 }} aria-label="product table">
       <TableHead>
         <TableRow> 
-            <TableCell align='center'>ID</TableCell>
-            <TableCell align='center'>NAME</TableCell>
-            <TableCell align='center'>YEAR</TableCell>
-            <TableCell align='center'>COLOR</TableCell>
-            <TableCell align='center'>PANTONE COLOR</TableCell>
+            <TableCell style={{ maxWidth: 10 }}   align='left'>ID</TableCell>
+            <TableCell style={{ minWidth: 160 }}  align='left'>NAME</TableCell>
+            <TableCell style={{ maxWidth: 100 }}  align='center'>YEAR</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -127,15 +136,13 @@ export default function Products({ products, loading }) {
         ? products.slice(page * productsPerPage, page * productsPerPage + productsPerPage)
         : products
         ).map((row) => (
-          <TableRow
+          <TableRow 
             key={row.id}
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
           >
-            <TableCell align="center" component="th" scope="row">{row.id}</TableCell>
-            <TableCell align="center">{row.name}</TableCell>
-            <TableCell align="center">{row.year}</TableCell>
-            <TableCell align="center">{row.color}</TableCell>
-            <TableCell align="center">{row.pantone_value}</TableCell>
+            <TableCell style={{background: row.color}}  align="left" component="th" scope="row">{row.id}</TableCell>
+            <TableCell style={{background: row.color}} align="left">{row.name}</TableCell>
+            <TableCell style={{background: row.color}} align="center">{row.year}</TableCell>  
           </TableRow>
         ))}
 
@@ -156,8 +163,7 @@ export default function Products({ products, loading }) {
         onRowsPerPageChange={handleChangeProductsPerPage}
       />
     {console.log("Tabela została utworzona")}
-  </TableContainer>
-    
+  </TableContainer> 
   )
 }
 
