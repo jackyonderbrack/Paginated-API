@@ -27,8 +27,6 @@ import LastPageIcon from '@mui/icons-material/LastPage';
 
 export default function Products({ products, loading }) {
   
-
-
   function TablePaginationActions(props) {
     const theme = useTheme();
     const { count, page, productsPerPage, onPageChange } = props;
@@ -90,15 +88,15 @@ export default function Products({ products, loading }) {
     rowsPerPage: PropTypes.number.isRequired,
   };
   
-
   const [page, setPage] = useState(0);
   const [productsPerPage, setProductsPerPage] = useState(5);
-  
+
+
+// Waiting for API download.
   if(loading) {
     return <h2>Loading...</h2>
   }
   
-
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * productsPerPage - Products.length) : 0;
@@ -133,7 +131,7 @@ export default function Products({ products, loading }) {
             key={row.id}
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
           >
-            <TableCell component="th" scope="row">{row.id}</TableCell>
+            <TableCell align="center" component="th" scope="row">{row.id}</TableCell>
             <TableCell align="center">{row.name}</TableCell>
             <TableCell align="center">{row.year}</TableCell>
             <TableCell align="center">{row.color}</TableCell>
@@ -141,15 +139,15 @@ export default function Products({ products, loading }) {
           </TableRow>
         ))}
 
-            {emptyRows > 0 && (
-            <TableRow style={{ height: 53 * emptyRows }}>
+            {emptyRows > (
+            <TableRow style={{ height: 6 * emptyRows }}>
               <TableCell colSpan={6} />
             </TableRow>
           )}
       </TableBody>
     </Table>
     <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
+        rowsPerPageOptions={[2, 5, 6]}
         component="div"
         count={products.length}
         rowsPerPage={productsPerPage}
